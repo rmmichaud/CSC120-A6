@@ -2,22 +2,36 @@
 import java.util.*;
 public class Library extends Building {
     private Hashtable<String, Boolean> collection;
+    /**
+     * initializes building and collection
+     */
     public Library() {
       super("Nielson", "Chapin Way", 5);
       this.collection = new Hashtable<String, Boolean>();
       System.out.println("You have built a library: 📖");
     }
-    
+    /**
+     * adds titles to the collection
+     * @param title
+     */
     public void addTitle(String title) {
       this.collection.put(title, true);
       System.out.println(title + " is added to the collection.");
     }
+    /**
+     * removes titles from collection, returns title 
+     * @param title
+     * @return
+     */
     public String removeTitle(String title) {
       this.collection.remove(title, true);
       System.out.println(title + " is removed from the collection.");
       return title;
     }
-
+    /**
+     * checks out titles from collection by changing value to false
+     * @param title
+     */
     public void checkOut(String title) {
       boolean defVal = this.collection.getOrDefault(title, false);
       if (defVal == true) {
@@ -27,11 +41,19 @@ public class Library extends Building {
         System.out.println(title + " is not available.");
       }
     }
+    /**
+     * returns title to collection by value to true 
+     * @param title
+     */
     public void returnBook(String title) {
       this.collection.replace(title, false, true);
       System.out.println(title + " has been returned.");
     }
-
+    /**
+     * checks if boook is in collection, returns false if checked out 
+     * @param title
+     * @return
+     */
     public boolean containsTitle(String title) {
       if (this.collection.getOrDefault(title, false) == true) {
         System.out.println(title + " is available in the collection.");

@@ -4,6 +4,12 @@ public class Cafe extends Building {
     private int nSugarPackets;
     private int nCreams;
     private int nCups;
+    /** initializes variables 
+     * @param nCoffeeOunces
+     * @param nSugarPackets
+     * @param nCreams
+     * @param nCups
+     */
     public Cafe(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups) {
         super("Compass", "Chapin Way", 2);
         this.nCoffeeOunces = nCoffeeOunces;
@@ -12,6 +18,12 @@ public class Cafe extends Building {
         this.nCups = nCups;
         System.out.println("You have built a cafe: ☕");
     }
+    /**
+     * selling coffee, restocking when necessary
+     * @param size
+     * @param nSugarPackets
+     * @param nCreams
+     */
     public void sellCoffee(int size, int nSugarPackets, int nCreams) {
         if (this.nCoffeeOunces < size) {
             restock(100, 0, 0, 0);
@@ -32,6 +44,13 @@ public class Cafe extends Building {
         System.out.println(String.valueOf(nCoffeeOunces) + " ounces, " + String.valueOf(nCups) + " cups, "
          + String.valueOf(nCreams) + " creams, and " + String.valueOf(nSugarPackets) + " sugar packets remain in stock.");
     }
+    /**
+     * 
+     * @param nCoffeeOunces
+     * @param nSugarPackets
+     * @param nCreams
+     * @param nCups
+     */
     private void restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups) {
         if (nCoffeeOunces != 0) {
             this.nCoffeeOunces = nCoffeeOunces;
@@ -46,6 +65,10 @@ public class Cafe extends Building {
             this.nCups = nCups;
         }
     }
+    /**
+     * testing methods 
+     * @param args
+     */
     public static void main(String[] args) {
         Cafe compass = new Cafe(20, 10, 5, 30);
         compass.sellCoffee(12, 02, 03);
