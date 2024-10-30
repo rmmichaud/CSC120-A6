@@ -3,7 +3,7 @@ import java.util.*;
 public class Library extends Building {
     private Hashtable<String, Boolean> collection;
     public Library() {
-      super.Building("Nielson", "Chapin Way", "5");
+      super("Nielson", "Chapin Way", 5);
       this.collection = new Hashtable<String, Boolean>();
       System.out.println("You have built a library: 📖");
     }
@@ -33,7 +33,13 @@ public class Library extends Building {
     }
 
     public boolean containsTitle(String title) {
-      return this.collection.getOrDefault(title, false);
+      if (this.collection.getOrDefault(title, false) == true) {
+        System.out.println(title + " is available in the collection.");
+        return true;
+      } else {
+        System.out.println(title + " is currently checked out or unavailable.");
+        return false;
+      }
     }
     public boolean isAvailable(String title) {
       boolean defVal = this.collection.getOrDefault(title, false);
@@ -47,7 +53,27 @@ public class Library extends Building {
       System.out.println(this.collection.toString());
     }
     public static void main(String[] args) {
-      new Library();
+      Library neilson = new Library();
+      String title1 = "Great Gatsby";
+      String title2 = "The Art of War";
+      String title3 = "Moby Dick";
+      String title4 = "War and Peace";
+      neilson.addTitle(title1);
+      neilson.addTitle(title2);
+      neilson.addTitle(title3);
+      neilson.addTitle(title4);
+      neilson.printCollection();
+      neilson.checkOut(title1);
+      neilson.containsTitle(title1);
+      neilson.checkOut(title4);
+      neilson.returnBook(title1);
+      neilson.containsTitle(title4);
+      neilson.printCollection();
+      neilson.returnBook(title4);
+      neilson.removeTitle(title3);
+      neilson.removeTitle(title1);
+      neilson.printCollection();
+
     }
   
   }
