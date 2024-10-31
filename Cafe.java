@@ -71,6 +71,7 @@ public class Cafe extends Building {
      */
     public static void main(String[] args) {
         Cafe compass = new Cafe(20, 10, 5, 30);
+        System.out.println(compass);
         compass.sellCoffee(12, 02, 03);
         compass.sellCoffee(25, 03, 05);
         compass.sellCoffee(12, 03, 05);

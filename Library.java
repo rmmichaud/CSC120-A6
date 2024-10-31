@@ -50,19 +50,24 @@ public class Library extends Building {
       System.out.println(title + " has been returned.");
     }
     /**
-     * checks if boook is in collection, returns false if checked out 
+     * checks if boook is in collection, returns false if not
      * @param title
      * @return
      */
     public boolean containsTitle(String title) {
-      if (this.collection.getOrDefault(title, false) == true) {
-        System.out.println(title + " is available in the collection.");
+      if (this.collection.containsKey(title)) {
+        System.out.println(title + " is in the collection.");
         return true;
       } else {
-        System.out.println(title + " is currently checked out or unavailable.");
+        System.out.println(title + " is currently not in the collection.");
         return false;
       }
     }
+    /**
+     * checks if boook is in collection, returns false if checked out 
+     * @param title
+     * @return
+     */
     public boolean isAvailable(String title) {
       boolean defVal = this.collection.getOrDefault(title, false);
       if (defVal == true) {
@@ -71,11 +76,19 @@ public class Library extends Building {
         return false;
       }
     }
+    /**
+     * prints collection
+     */
     public void printCollection(){
       System.out.println(this.collection.toString());
     }
+    /**
+     * declares new library and tests methods 
+     * @param args
+     */
     public static void main(String[] args) {
       Library neilson = new Library();
+      System.out.println(neilson);
       String title1 = "Great Gatsby";
       String title2 = "The Art of War";
       String title3 = "Moby Dick";
